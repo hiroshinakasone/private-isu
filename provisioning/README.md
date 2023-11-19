@@ -5,7 +5,7 @@
 image/ansible以下に入っているplaybookを順番に実行。
 
 ```
-$ ansible-playbook -i hosts image/ansible/playbooks.yml --skip-tags nodejs
+$ ansible-playbook -i hosts -u ubuntu --private-key=/path/to/your/private/key image/ansible/playbooks.yml --skip-tags nodejs
 ```
 
 ## bench
@@ -13,7 +13,7 @@ $ ansible-playbook -i hosts image/ansible/playbooks.yml --skip-tags nodejs
 bench/ansible以下に入っているplaybookを順番に実行。
 
 ```
-$ ansible-playbook -i hosts bench/ansible/playbooks.yml
+$ ansible-playbook -i hosts -u ubuntu --private-key=/path/to/your/private/key bench/ansible/playbooks.yml
 ```
 
 ## benchmakerを同梱したwebapp
@@ -21,7 +21,7 @@ $ ansible-playbook -i hosts bench/ansible/playbooks.yml
 webappとbenchmaker両方含むall in oneなインスタンスをセットアップする場合
 
 ```
-$ ansible-playbook -i hosts image/ansible/playbooks.yml --skip-tags nodejs -e 'allinone=True'
+$ ansible-playbook -i hosts -u ubuntu --private-key=/path/to/your/private/key image/ansible/playbooks.yml --skip-tags nodejs -e 'allinone=True'
 ```
 
 同梱したbenchmarkerを動作させるには以下のようにします。
