@@ -1,0 +1,17 @@
+- name: Ensures logs dir exists
+  file:
+    path: "../logs/mysql/{{ inventory_hostname }}/"
+    state: directory
+    recurse: true
+  delegate_to: 127.0.0.1
+
+- name: Fetch log files
+  become: true
+  become_user: root
+  fetch:
+    src: "/{{ item }}"
+    dest: "../logs/mysql/{{ inventory_hostname }}/"
+    flat: true
+  with_items:
+    - var/log/mysql/error.log
+    - var/log/mysql/mysql-slow.log
