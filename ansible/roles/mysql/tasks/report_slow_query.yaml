@@ -1,0 +1,5 @@
+- name: Report slow queries
+  shell:
+    chdir: "../logs/mysql/{{ inventory_hostname }}/"
+    cmd: "pt-query-digest --limit 10 mysql-slow.log > report.txt"
+  delegate_to: 127.0.0.1

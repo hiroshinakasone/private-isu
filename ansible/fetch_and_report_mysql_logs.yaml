@@ -4,3 +4,6 @@
     - import_role:
         name: mysql
         tasks_from: fetch_logs
+    - import_role:
+        name: mysql
+        tasks_from: report_slow_query

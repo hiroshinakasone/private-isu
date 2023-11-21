@@ -7,7 +7,6 @@
 
 - name: Fetch log files
   become: true
-  become_user: root
   fetch:
     src: "/{{ item }}"
     dest: "../logs/mysql/{{ inventory_hostname }}/"
