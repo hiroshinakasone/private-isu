@@ -1,0 +1,13 @@
+- name: Build webapp
+  shell:
+    chdir: /home/isucon/private_isu/webapp/golang
+    cmd: GOOS=linux GOARCH=amd64 /home/isucon/.local/go/bin/go build -o app .
+  listen: build_webapp
+
+- name: Restart webapp
+  become: true
+  systemd:
+    name: isu-go.service
+    state: restarted
+    daemon_reload: true
+  listen: restart_webapp

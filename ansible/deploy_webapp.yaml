@@ -1,0 +1,6 @@
+- hosts: webapp
+  remote_user: ubuntu
+  tasks:
+    - import_role:
+        name: webapp
+        tasks_from: deploy

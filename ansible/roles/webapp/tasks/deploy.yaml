@@ -1,0 +1,13 @@
+- name: Deploy webapp
+  become: true
+  copy:
+    src: "../webapp/golang/{{ item }}"
+    dest: "/home/isucon/private_isu/webapp/golang/{{ item }}"
+    owner: isucon
+    group: isucon
+    mode: "0644"
+  with_items:
+    - app.go
+  notify:
+    - build_webapp
+    - restart_webapp
